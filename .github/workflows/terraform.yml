@@ -244,7 +244,7 @@ on:
       - main
 
 jobs:
-  create_s3:
+
     name: Create S3 bucket for Terraform state
     runs-on: ubuntu-latest
     steps:
