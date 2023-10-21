@@ -256,7 +256,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION}}
-           args: '-var="instance_type=t2.medium"'
+
       - name: Create S3 bucket
         run: |
           aws s3 mb s3://lex-terraform-anlam-10-4-23-amlan
@@ -273,7 +273,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION}}
-           args: '-var="instance_type=t2.medium"'
+
       # - uses: actions/setup-python@v4
       #   with:
       #     python-version: "3.9"
