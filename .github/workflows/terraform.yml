@@ -288,14 +288,18 @@ jobs:
         id: init
         run: |
           terraform init
+            args: '-auto-approve -var="instance_type=t2.medium"'
       - name: Terraform Plan
         id: plan
         run: |
           terraform plan -no-color -input=false
         continue-on-error: true
+          args: '-auto-approve -var="instance_type=t2.medium"'
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+          args: '-auto-approve -var="instance_type=t2.medium"'
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve -input=false
+            args: '-auto-approve -var="instance_type=t2.medium"'
