@@ -256,6 +256,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION}}
+           args: '-var="instance_type=t2.medium"'
       - name: Create S3 bucket
         run: |
           aws s3 mb s3://lex-terraform-anlam-10-4-23-amlan
@@ -272,6 +273,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION}}
+           args: '-var="instance_type=t2.medium"'
       # - uses: actions/setup-python@v4
       #   with:
       #     python-version: "3.9"
@@ -288,18 +290,14 @@ jobs:
         id: init
         run: |
           terraform init
-            args: '-auto-approve -var="instance_type=t2.medium"'
       - name: Terraform Plan
         id: plan
         run: |
           terraform plan -no-color -input=false
         continue-on-error: true
-          args: '-auto-approve -var="instance_type=t2.medium"'
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
-          args: '-auto-approve -var="instance_type=t2.medium"'
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve -input=false
-            args: '-auto-approve -var="instance_type=t2.medium"'
