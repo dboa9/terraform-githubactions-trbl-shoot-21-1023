@@ -99,13 +99,13 @@ jobs:
    # dboedited
    #*************
     - name: Terraform Init
-      uses: hashicorp/terrraform-github-actions@master
+      uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 0.14.3
         tf_actions_subcommand: 'init'
         tf_actions_working_dir: '.'
         tf_actions_comment: true
-     
+        args: '-var="instance_type=t2.medium"'
 
     # Checks that all Terraform configuration files adhere to a canonical format
     # - name: Terraform Format
@@ -116,13 +116,13 @@ jobs:
    # dboedited
    #*************
     - name: Terraform Plan
-      uses: hashicorp/terrraform-github-actions@master
+      uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 0.14.3
         tf_actions_subcommand: 'plan'
         tf_actions_working_dir: '.'
         tf_actions_comment: true
-     
+        args: '-var="instance_type=t2.medium"'
 
       # On push to "master", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
@@ -133,10 +133,10 @@ jobs:
    # dboedited
    #*************
     - name: Terraform apply
-      uses: hashicorp/terrraform-github-actions@master
+      uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 0.14.3
         tf_actions_subcommand: 'apply'
         tf_actions_working_dir: '.'
         tf_actions_comment: true
-     
+        args: '-auto-approve -var="instance_type=t2.medium"'
