@@ -3,6 +3,6 @@
 # https://github.com/KanchanSoni16/terraform-s3-lambda-apigatway
 
 
-instance_type      = "t2.micro"
+# instance_type      = "t2.micro"
 
 
