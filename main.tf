@@ -1,3 +1,5 @@
+# https://youtu.be/3Gm2Tuh4vpc
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
